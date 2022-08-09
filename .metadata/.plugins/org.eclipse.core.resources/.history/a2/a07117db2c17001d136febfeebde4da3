@@ -1,0 +1,56 @@
+package tests.get.requestspec;
+
+import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import testbase.TestBase;
+import utilities.ReadExcelFile;
+
+public class TC002_GetASingleProduct {
+
+
+	Response res;
+	ReadExcelFile readFile;
+	
+	@BeforeTest
+	public void setupTest() {
+		int idNumber = 4;
+		RequestSpecification req = TestBase.setup();
+		res = req.get("/products/"+idNumber);
+		
+	}
+	
+	@Test(dataProvider="dataForTest")
+	public void test() {
+		String body = res.getBody().asPrettyString();
+		int statusCode = res.getStatusCode();
+		System.out.println(statusCode);
+		System.out.println(body);
+		Assert.assertEquals(statusCode, 200);
+	}
+	
+	@DataProvider(name="dataForTest")
+	public String[][] getData() {
+		readFile = new ReadExcelFile();
+		int rowCount = readFile.getRowCount("dataForGetSingleProduct.xlsx", "Sheet1");
+		System.out.println(rowCount);
+		int colCount = readFile.getCellCount("dataForGetSingleProduct.xlsx", "Sheet1");
+		String[][] data = new String[rowCount][colCount];
+		
+		for(int x = 1; x < rowCount; x++) {
+			for(int y = 0; y < colCount; y++) {
+				data[x-1][y] = readFile.getCellData("dataForGetSingleProduct.xlsx", "Sheet1", x, y);
+			}
+		}
+		
+		return data;
+	}
+	
+	
+	
+
+}

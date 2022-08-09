@@ -1,0 +1,34 @@
+package utilities;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class ReadExcelFile {
+	
+	XSSFWorkbook wb;
+	XSSFSheet sheet;
+	XSSFCell cell;
+	
+	public int getRowCount(String fileName, String sheetName) {
+		int rows = 0;
+		try {
+			wb = new XSSFWorkbook(new FileInputStream("src/test/resources/Data/" + fileName));
+			sheet = wb.getSheet(sheetName);
+			rows = sheet.getLastRowNum();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return rows;
+	}
+
+}

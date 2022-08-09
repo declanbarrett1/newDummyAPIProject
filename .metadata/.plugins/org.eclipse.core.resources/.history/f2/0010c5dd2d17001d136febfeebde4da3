@@ -1,0 +1,5 @@
+package tests.get.restassured;
+
+public class TC002_GetSingleProduct {
+
+}

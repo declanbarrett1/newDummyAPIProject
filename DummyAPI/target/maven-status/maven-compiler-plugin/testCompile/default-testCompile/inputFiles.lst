@@ -1,0 +1,6 @@
+/Users/declanbarrett/Documents/Eclipse Projects/Rest Assured API Tutorial/NewDummyAPI/DummyAPI/src/test/java/tests/get/requestspec/TC001_GetAllProducts.java
+/Users/declanbarrett/Documents/Eclipse Projects/Rest Assured API Tutorial/NewDummyAPI/DummyAPI/src/test/java/testbase/TestBase.java
+/Users/declanbarrett/Documents/Eclipse Projects/Rest Assured API Tutorial/NewDummyAPI/DummyAPI/src/test/java/tests/get/requestspec/TC002_GetASingleProduct.java
+/Users/declanbarrett/Documents/Eclipse Projects/Rest Assured API Tutorial/NewDummyAPI/DummyAPI/src/test/java/tests/get/restassured/TC002_GetSingleProduct.java
+/Users/declanbarrett/Documents/Eclipse Projects/Rest Assured API Tutorial/NewDummyAPI/DummyAPI/src/test/java/tests/get/restassured/TC001_GetAllProducts.java
+/Users/declanbarrett/Documents/Eclipse Projects/Rest Assured API Tutorial/NewDummyAPI/DummyAPI/src/test/java/utilities/ReadExcelFile.java

@@ -1,0 +1,35 @@
+package tests.get.restassured;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import utilities.ReadExcelFile;
+
+public class TC002_GetSingleProduct {
+	
+	Response res;
+	static ReadExcelFile readFile;
+	RequestSpecification req ;
+	
+	
+	@Test
+	public void setupTest(String idNumber) {
+		res = RestAssured.given()
+				.when()
+				.get("https://dummyjson.com/products/"+idNumber)
+				.then()
+				.log().body()
+				.statusCode(200)
+				.extract().response();
+		
+		System.out.println(res.getBody().asPrettyString());
+		System.out.println(res.getStatusCode());
+		Assert.assertEquals(res.getBody().asString().contains("id"), true);
+		Assert.assertEquals(res.getStatusCode(), 200);
+	}
+
+
+}

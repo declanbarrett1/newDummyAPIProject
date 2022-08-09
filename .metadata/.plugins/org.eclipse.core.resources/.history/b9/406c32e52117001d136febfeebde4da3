@@ -1,0 +1,29 @@
+package tests.get.restassured;
+
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import junit.framework.Assert;
+import testbase.TestBase;
+
+public class TC001_GetAllProducts {
+	
+	Response res;
+	
+	@BeforeTest
+	public void setupTest() {
+		RequestSpecification req = TestBase.setup();
+		res = req.get("/products");
+	}
+
+	
+	@Test
+	public void testingGetAll() {
+		System.out.println(res.getBody().asString());
+		System.out.println(res.getStatusCode());
+		
+		Assert.assertEquals(res.getStatusCode(), 200);
+	}
+}

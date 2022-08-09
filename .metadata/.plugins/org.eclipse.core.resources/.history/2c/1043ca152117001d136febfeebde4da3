@@ -1,0 +1,9 @@
+package testbase;
+
+public class TestBase {
+
+	
+	public void setup() {
+		
+	}
+}
